@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="css/style-index.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="icon" type="image/svg+xml"
-        href="resources/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="resources/favicon.png">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
@@ -29,8 +28,12 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link btn text-white boton-nav"><i class="bi bi-gear"></i><span
-                                    class="btn-text">
+
+                            <!--La razón por la cual es necesario que tenga toggle y target es basicamente porque el toggle le dice que debe cambiar el estado de un elemente
+                            y este estado nuevo debe cambiarlo usando el "protocolo" modal que es una forma en la que se cambian el estado de prendido a apagado o viceversa
+                            de los modals, por otro lado el target le dice a que elemento especificamente-->
+                            <a class="nav-link btn text-white boton-nav" data-bs-toggle="modal"
+                                data-bs-target="#settings-modal"><i class="bi bi-gear"></i><span class="btn-text">
                                     Setting</span></a>
                         </li>
 
@@ -50,15 +53,27 @@
                                 <ul class="dropdown-menu dropdown-menu-lg-end">
                                     <li><a class="dropdown-item" href="#" style="display: none;"
                                             id="account-dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#account-information"><img src="https://pomofocus.io/icons/user-black.png" alt="account icon" class="dropdown-icon">Account</a></li>
-                                    <li><a class="dropdown-item" href="log-in.html" id="log-in-dropdown-item"><img src="https://pomofocus.io/icons/login-black.png" alt="login icon" class="dropdown-icon">Login</a>
+                                            data-bs-target="#account-information"><img
+                                                src="https://pomofocus.io/icons/user-black.png" alt="account icon"
+                                                class="dropdown-icon">Account</a></li>
+                                    <li><a class="dropdown-item" href="log-in.html" id="log-in-dropdown-item"><img
+                                                src="https://pomofocus.io/icons/login-black.png" alt="login icon"
+                                                class="dropdown-icon">Login</a>
                                     </li>
-                                    <li><a class="dropdown-item" href="#"><img src="https://pomofocus.io/icons/crown-black.png" alt="premium icon" class="dropdown-icon">Premium</a></li>
-                                    <li><a class="dropdown-item" href="#"><img src="https://pomofocus.io/icons/keyboard-black.png" alt="shortcuts icon" class="dropdown-icon">Shortcuts</a></li>
+                                    <li><a class="dropdown-item" href="#"><img
+                                                src="https://pomofocus.io/icons/crown-black.png" alt="premium icon"
+                                                class="dropdown-icon">Premium</a></li>
+                                    <li><a class="dropdown-item" href="#"><img
+                                                src="https://pomofocus.io/icons/keyboard-black.png" alt="shortcuts icon"
+                                                class="dropdown-icon">Shortcuts</a></li>
                                     <li><a class="dropdown-item" href="#" style="display: none;"
-                                            id="log-out-dropdown-item"><img src="https://pomofocus.io/icons/logout-black.png" alt="login icon" class="dropdown-icon">Logout</a></li>
+                                            id="log-out-dropdown-item"><img
+                                                src="https://pomofocus.io/icons/logout-black.png" alt="login icon"
+                                                class="dropdown-icon">Logout</a></li>
                                     <li><a class="dropdown-item" href="#" style="display: none;"
-                                            id="delete-account-dropdown-item"><img src="https://pomofocus.io/icons/delete-black.png" alt="delete account icon" class="dropdown-icon">Delete account</a></li>
+                                            id="delete-account-dropdown-item"><img
+                                                src="https://pomofocus.io/icons/delete-black.png"
+                                                alt="delete account icon" class="dropdown-icon">Delete account</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -87,16 +102,60 @@
                                     </div>
                                 </div>
                                 <div class=" modal-footer border-0">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" id="save-changes-buton">Save changes</button>
-                                    </div>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="save-changes-buton">Save
+                                        changes</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </nav>
+
+
+        <!--Todos los atributos que comienzan con aria son solamente de accesibilidad, osea que no ayudan en nada que tenga que ver con la interactivadad, pero 
+                    ayudan a personas ciegas que puedan usar la web más comodamente, UNA COSA INTERESENTA A TENER EN CUENTA es que los modals pueden estar en cualquier 
+                    parte de larchivo entonces es preferible que esten fuera de cualquier tipo de div que les pueda poner algun tipo de restrcciones de tamaño-->
+        <div class="modal fade" tabindex="-1" id="settings-modal" aria-labelledby="Settings" aria-hidden="true">
+            <div class="modal-dialog modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center title-modal-settings" id="settings-modal-label">Setting</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body row">
+                        <h5 class="col-12 title-modal-settings sub-title-modal-settings"><i class="bi bi-clock"
+                                style="margin-right: 7px;"></i>Timer</h5>
+                        <h6 class="col-12 setting-title-font">Times (minutes)</h6>
+                        <div class="row col-12">
+                            <div class="col-4">
+                                <label for="pomodoro-number-settings">Pomdoro</label>
+                                <input type="number" id="pomodoro-number-settings" min="0" step="1" width="3px">
+                            </div>
+
+                            <div class="col-4">
+                                <label for="">Short break</label>
+                                <input type="number" min="0" step="1">
+                            </div>
+
+                            <div class="col-4">
+                                <label for="">Long break</label>
+                                <input type="number" min="0" step="1">
+                            </div>
+
+
+
+                            
+                        </div>
+                    </div>
+                    <div class=" modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <hr class="line">
 
