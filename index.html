@@ -125,29 +125,78 @@
                         <h5 class="modal-title text-center title-modal-settings" id="settings-modal-label">Setting</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body row">
-                        <h5 class="col-12 title-modal-settings sub-title-modal-settings"><i class="bi bi-clock"
+                    <div class="modal-body">
+                        <h5 class="title-modal-settings sub-title-modal-settings"><i class="bi bi-clock"
                                 style="margin-right: 7px;"></i>Timer</h5>
-                        <h6 class="col-12 setting-title-font">Times (minutes)</h6>
-                        <div class="row col-12">
+                        <h6 class="setting-title-font">Times (minutes)</h6>
+                        <div class="row setting-row">
                             <div class="col-4">
-                                <label for="pomodoro-number-settings">Pomdoro</label>
-                                <input type="number" id="pomodoro-number-settings" min="0" step="1" width="3px">
+                                <label for="pomodoro-number-settings">Pomodoro</label>
+                                <input type="number" id="pomodoro-number-settings" class="form-control setting-input" min="0" step="1">
                             </div>
 
                             <div class="col-4">
-                                <label for="">Short break</label>
-                                <input type="number" min="0" step="1">
+                                <label for="short-break-number-settings">Short Break</label>
+                                <input type="number" id="short-break-number-settings" class="form-control setting-input" min="0" step="1">
                             </div>
 
                             <div class="col-4">
-                                <label for="">Long break</label>
-                                <input type="number" min="0" step="1">
+                                <label for="long-break-number-settings">Long Break</label>
+                                <input type="number" id="long-break-number-settings" class="form-control setting-input" min="0" step="1">
                             </div>
+                        </div>
 
+                        <hr class="setting-divider">
 
+                        <div class="row setting-row">
+                            <div class="col-8">
+                                <label class="setting-label">Auto-start Pomodoros</label>
+                                <p class="setting-description">Automatically start Pomodoros</p>
+                            </div>
+                            <div class="col-4 d-flex justify-content-end align-items-center">
+                                <div class="form-check form-switch setting-toggle">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="auto-start-toggle">
+                                </div>
+                            </div>
+                        </div>
 
-                            
+                        <div class="row setting-row">
+                            <div class="col-8">
+                                <label class="setting-label">Long Break Interval</label>
+                                <p class="setting-description">Take a break after this many Pomodoros</p>
+                            </div>
+                            <div class="col-4 d-flex justify-content-end align-items-center">
+                                <input type="number" class="form-control setting-input" style="width: 70px;" min="0" step="1" value="4">
+                            </div>
+                        </div>
+
+                        <hr class="setting-divider">
+
+                        <h5 class="title-modal-settings sub-title-modal-settings"><i class="bi bi-volume-up"
+                                style="margin-right: 7px;"></i>Sound</h5>
+
+                        <div class="row setting-row">
+                            <div class="col-8">
+                                <label class="setting-label">Alarm Sound</label>
+                                <p class="setting-description">Play sound when timer stops</p>
+                            </div>
+                            <div class="col-4 d-flex justify-content-end align-items-center">
+                                <div class="form-check form-switch setting-toggle">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="alarm-sound-toggle" checked>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row setting-row">
+                            <div class="col-8">
+                                <label class="setting-label">Notification</label>
+                                <p class="setting-description">Notify when timer stops</p>
+                            </div>
+                            <div class="col-4 d-flex justify-content-end align-items-center">
+                                <div class="form-check form-switch setting-toggle">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="notification-toggle">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class=" modal-footer">
